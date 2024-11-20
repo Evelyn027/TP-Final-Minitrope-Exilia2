@@ -1,0 +1,13 @@
+# Ignorar los siguientes archivos y directorios
+[Bb]uild/
+[Bb]uilds/
+[Ll]ibrary/
+[Ll]ibraries/
+[Tt]emp/
+[Tt]emplates/
+.vscode/
+.idea/
+.vs/
+*.log
+*.swp
+*.user
