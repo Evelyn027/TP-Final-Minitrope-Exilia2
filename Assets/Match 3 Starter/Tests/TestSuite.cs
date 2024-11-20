@@ -200,7 +200,7 @@ public class TestSuite
         // Act: Detectar las combinaciones de fichas en el tablero
         var matches = boardManager.FindMatches(new Vector2Int(0, 0));
 
-        // Assert: Comprobar que se encuentra la combinación de 4 fichas en la primera fila
+        // Assert: Comprobar que se encuentra la combinacion de 4 fichas en la primera fila
         Assert.AreEqual(4, matches.Count, "Debería encontrar 4 fichas coincidentes en horizontal.");
 
         // Verificar que las combinaciones no sean nulas
@@ -215,7 +215,7 @@ public class TestSuite
         SceneManager.LoadScene("Menu");
         yield return null;
 
-        // Buscar el botón 'PlayButton'
+        // Buscar el boton 'PlayButton'
         GameObject playButton = GameObject.Find("PlayButton");
         Assert.IsNotNull(playButton, "El botón 'PlayButton' no se encontro en la escena.");
 
@@ -228,50 +228,8 @@ public class TestSuite
         yield return new WaitForSeconds(2f);
 
         // Comprobar que la escena activa es "Game"
-        Assert.AreEqual("Game", SceneManager.GetActiveScene().name, "La escena no cambió a 'Game' al presionar el botón.");
+        Assert.AreEqual("Game", SceneManager.GetActiveScene().name, "La escena no cambió a 'Game' al presionar el boton.");
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
