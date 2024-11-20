@@ -99,7 +99,7 @@ A continuación, se describen las pruebas unitarias realizadas.
 
 ### 2. Test_NoAvailableMatches
 #### Descripción
-// Test 2: Verificar si no hay combinaciones disponibles
+`Test 2: Verificar si no hay combinaciones disponibles`.
 
 ```csharp
 [UnityTest]
@@ -148,7 +148,7 @@ A continuación, se describen las pruebas unitarias realizadas.
 
 ### 3. Test_BoardInitializationAndMatchDetection
 #### Descripción
-Test que verifica que el tablero se inicializa correctamente y que se detecten combinaciones de 4 fichas en una fila.
+`Test que verifica que el tablero se inicializa correctamente y que se detecten combinaciones de 4 fichas en una fila`.
 
 ```csharp
 [UnityTest]
@@ -197,7 +197,7 @@ Test que verifica que el tablero se inicializa correctamente y que se detecten c
 
 ### 4. PlayButton_LoadsGameScene
 #### Descripción
-Test 4: Verificar el comportamiento del botón "Play"
+`Test 4: Verificar el comportamiento del botón "Play"`.
 
 ```csharp
 [UnityTest]
