@@ -146,56 +146,7 @@ A continuación, se describen las pruebas unitarias realizadas.
 
 ---
 
-### 3. Test_BoardInitializationAndMatchDetection
-#### Descripción
-`Test que verifica que el tablero se inicializa correctamente y que se detecten combinaciones de 4 fichas en una fila`.
-
-```csharp
-[UnityTest]
-    public IEnumerator Test_BoardInitializationAndMatchDetection()
-    {
-        // Arrange: Configurar un tablero con una combinación de 4 fichas en una fila
-        Dictionary<string, int> candyMap = new Dictionary<string, int>()
-    {
-        {"R", 0}, {"B", 1}, {"G", 2},
-        {"M", 3}, {"P", 4}, {"Y", 5}
-    };
-
-        string[,] gridInicial = new string[,] {
-        {"B", "B", "B", "B"},  // Combinación de 4 fichas en fila
-        {"R", "Y", "M", "P"},
-        {"G", "P", "B", "Y"}
-    };
-
-        boardManager.xSize = 4;
-        boardManager.ySize = 3;
-
-        Sprite[,] spriteGrid = new Sprite[4, 3];
-        for (int x = 0; x < 4; x++)
-        {
-            for (int y = 0; y < 3; y++)
-            {
-                spriteGrid[x, y] = boardManager.candies[candyMap[gridInicial[y, x]]];
-            }
-        }
-
-        // Inicializar el tablero con las fichas
-        boardManager.InitializeBoard(spriteGrid);
-        yield return null; // Esperar un frame para asegurar que el tablero se ha inicializado
-
-        // Act: Detectar las combinaciones de fichas en el tablero
-        var matches = boardManager.FindMatches(new Vector2Int(0, 0));
-
-        // Assert: Comprobar que se encuentra la combinacion de 4 fichas en la primera fila
-        Assert.AreEqual(4, matches.Count, "Debería encontrar 4 fichas coincidentes en horizontal.");
-
-        // Verificar que las combinaciones no sean nulas
-        Assert.IsNotNull(matches, "Las combinaciones no deben ser nulas.");
-    }
-```
----
-
-### 4. PlayButton_LoadsGameScene
+### 3. PlayButton_LoadsGameScene
 #### Descripción
 `Test 4: Verificar el comportamiento del botón "Play"`.
 
