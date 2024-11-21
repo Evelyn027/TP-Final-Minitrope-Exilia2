@@ -77,8 +77,7 @@ public class TestSuite
     }
 
 
-    /// Test que comprueba si el combinar 4 caramelos en hilera suma al puntaje del jugador
-    // Test 1: Comprobando combinación de 4 fichas en hilera
+    /// Test1: Que comprueba si el combinar 4 caramelos en hilera suma al puntaje del jugador
     [UnityTest]
     public IEnumerator Test_FourTileSpecialCombination()
     {
@@ -94,8 +93,8 @@ public class TestSuite
             {"R", "Y", "M", "P"},
             {"G", "P", "B", "Y"}
         };
-
-        boardManager.xSize = 4;
+        //tamaño 3 4
+        boardManager.xSize = 4; 
         boardManager.ySize = 3;
 
         Sprite[,] spriteGrid = new Sprite[4, 3];
@@ -106,15 +105,13 @@ public class TestSuite
                 spriteGrid[x, y] = boardManager.candies[candyMap[gridInicial[y, x]]];
             }
         }
-
         // Act
         boardManager.InitializeBoard(spriteGrid);
         yield return null;
 
-        var matches = boardManager.FindMatches(new Vector2Int(0, 0));
-
+        var matches = boardManager.FindMatches(new Vector2Int(0, 0)); //compara
         // Assert
-        Assert.AreEqual(4, matches.Count, "Deberia encontrar 4 fichas coincidentes en horizontal");
+        Assert.AreEqual(4, matches.Count, "Deberia encontrar 4 fichas coincidentes en horizontal"); //Comprueba y confirma q hay 4 combis
     }
 
     // Test 2: Verificar si no hay combinaciones disponibles
@@ -127,14 +124,12 @@ public class TestSuite
         {"R", 0}, {"B", 1}, {"G", 2},
         {"M", 3}, {"P", 4}, {"Y", 5}
     };
-
         // Un tablero sin combinaciones posibles
         string[,] gridInicial = new string[,] {
         {"R", "G", "B"},
         {"P", "M", "Y"},
         {"B", "Y", "G"}
     };
-
         boardManager.xSize = 3;
         boardManager.ySize = 3;
 
@@ -146,68 +141,17 @@ public class TestSuite
                 spriteGrid[x, y] = boardManager.candies[candyMap[gridInicial[y, x]]];
             }
         }
-
         // Act
         boardManager.InitializeBoard(spriteGrid);
         yield return null;
-
         // Verificar si hay combinaciones disponibles
         var matches = boardManager.FindMatches(new Vector2Int(0, 0));
-
         // Assert
         Assert.AreEqual(0, matches.Count, "No debería haber combinaciones disponibles.");
     }
 
 
-
-
-    /// <summary>
-    /// Test que verifica que el tablero se inicializa correctamente y que se detecten combinaciones de 4 fichas en una fila.
-    /// </summary>
-    /// <returns></returns>
-    [UnityTest]
-    public IEnumerator Test_BoardInitializationAndMatchDetection()
-    {
-        // Arrange: Configurar un tablero con una combinación de 4 fichas en una fila
-        Dictionary<string, int> candyMap = new Dictionary<string, int>()
-    {
-        {"R", 0}, {"B", 1}, {"G", 2},
-        {"M", 3}, {"P", 4}, {"Y", 5}
-    };
-
-        string[,] gridInicial = new string[,] {
-        {"B", "B", "B", "B"},  // Combinación de 4 fichas en fila
-        {"R", "Y", "M", "P"},
-        {"G", "P", "B", "Y"}
-    };
-
-        boardManager.xSize = 4;
-        boardManager.ySize = 3;
-
-        Sprite[,] spriteGrid = new Sprite[4, 3];
-        for (int x = 0; x < 4; x++)
-        {
-            for (int y = 0; y < 3; y++)
-            {
-                spriteGrid[x, y] = boardManager.candies[candyMap[gridInicial[y, x]]];
-            }
-        }
-
-        // Inicializar el tablero con las fichas
-        boardManager.InitializeBoard(spriteGrid);
-        yield return null; // Esperar un frame para asegurar que el tablero se ha inicializado
-
-        // Act: Detectar las combinaciones de fichas en el tablero
-        var matches = boardManager.FindMatches(new Vector2Int(0, 0));
-
-        // Assert: Comprobar que se encuentra la combinacion de 4 fichas en la primera fila
-        Assert.AreEqual(4, matches.Count, "Debería encontrar 4 fichas coincidentes en horizontal.");
-
-        // Verificar que las combinaciones no sean nulas
-        Assert.IsNotNull(matches, "Las combinaciones no deben ser nulas.");
-    }
-
-    // Test 4: Verificar el comportamiento del botón "Play"
+    // Test 3: Verificar el comportamiento del botón "Play"
     [UnityTest]
     public IEnumerator PlayButton_LoadsGameScene()
     {
@@ -221,16 +165,14 @@ public class TestSuite
 
         // Asegúrate de que el componente Button está presente
         Button buttonComponent = playButton.GetComponent<Button>();
-        Assert.IsNotNull(buttonComponent, "El componente Button no está presente en el objeto 'PlayButton'.");
+        Assert.IsNotNull(buttonComponent, "El componente Button no esta presente en el objeto 'PlayButton'.");
 
         // Simular el clic en el botón 'PlayButton'
         buttonComponent.onClick.Invoke();
         yield return new WaitForSeconds(2f);
 
         // Comprobar que la escena activa es "Game"
-        Assert.AreEqual("Game", SceneManager.GetActiveScene().name, "La escena no cambió a 'Game' al presionar el boton.");
+        Assert.AreEqual("Game", SceneManager.GetActiveScene().name, "La escena no cambio a 'Game' al presionar el boton.");
     }
-
-
 
 }
